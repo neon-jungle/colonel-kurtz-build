@@ -1,0 +1,27 @@
+/**
+ * Color Values
+ *
+ * These mostly come from the Material Design Standard
+ * http://www.google.com/design/spec/style/color.html
+ */
+
+/**
+ * When using Colonel Kurtz with the active_material gem, this will
+ * allow the editor to inherit the custom color scheme configured for
+ * those styles.
+ */
+$theme-primary: #009688 !default;
+$theme-secondary: #eeeeee !default;
+$theme-accent: #cddc39 !default;
+$theme-text: rgba(#000, 0.875) !default;
+$theme-secondary-text: rgba(#000, 0.54) !default;
+
+/**
+ * Colonel Kurtz specific values
+ */
+$col-accent: $theme-accent !default;
+$col-secondary: $theme-secondary !default;
+$col-primary: $theme-primary !default;
+$col-backdrop: #eee !default;
+$col-text: $theme-text !default;
+$col-secondary-text: $theme-secondary-text !default;

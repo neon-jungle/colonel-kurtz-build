@@ -1,0 +1,78 @@
+/**
+ * Switch
+ * Switch allows users to create new blocks
+ */
+
+$col-switch-animation   : 0.3s col-switch cubic-bezier(.89,.03,.42,1.23) !default;
+$col-switch-background  : #fff !default;
+$col-switch-padding     : unit(2) 0 !default;
+$col-switch-shadow      : 0 1px 3px rgba(#000, 0.4) !default;
+$col-switch-btn-padding : 10px unit(2) !default;
+$col-switch-btn-width   : unit(11) !default;
+$col-switch-btn-border  : rgba(#000, 0.15) !default;
+$col-switch-nav-radius  : 3px !default;
+
+.col-switch {
+  padding: $col-switch-padding;
+  text-align: center;
+  white-space: nowrap;
+  transition: 0.2s all;
+  width: auto;
+}
+
+.col-switch-disabled {
+  cursor: no-drop;
+  opacity: 0.3;
+}
+
+.col-switch-btn,
+.col-switch-dropdown {
+  border-radius: 0;
+  display: inline-block;
+  line-height: unit(2);
+  padding: $col-switch-btn-padding;
+  position: relative;
+  min-width: $col-switch-btn-width;
+  border-left: 1px solid $col-switch-btn-border;
+
+  &:first-child:not(:only-child) {
+    border-left: 0;
+    border-top-left-radius: $col-switch-nav-radius;
+    border-bottom-left-radius: $col-switch-nav-radius;
+  }
+
+  &:last-child:not(:only-child) {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  &:only-child {
+    border: 0;
+  }
+}
+
+.col-switch-btn {
+  &:hover,
+  &:focus {
+    background: rgba(#000, 0.1);
+    border-left-color: darken($col-switch-btn-border, 10%);
+    box-shadow: 1px 0 0 rgba(#000, 0.1), inset 0 1px rgba(#fff, 0.4);
+    transition: 0.1s all;
+  }
+}
+
+.col-switch-dropdown {
+  padding: 0;
+}
+
+.col-switch-nav {
+  animation: $col-switch-animation;
+  background: $col-switch-background;
+  border-radius: $col-switch-nav-radius;
+  box-shadow: $col-switch-shadow;
+  display: inline-block;
+}
+
+.col-switch .col-btn-fab {
+  animation: $col-switch-animation;
+}

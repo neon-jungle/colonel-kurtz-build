@@ -1,0 +1,55 @@
+{
+  "name": "colonel-kurtz",
+  "version": "4.1.0",
+  "description": "A block editor",
+  "main": "src/Colonel.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vigetlabs/colonel-kurtz.git"
+  },
+  "keywords": [
+    "block",
+    "editor"
+  ],
+  "contributors": [
+    {
+      "name": "Lawson Kurtz",
+      "email": "lawson.kurtz@viget.com",
+      "url": "http://viget.com"
+    },
+    {
+      "name": "Nate Hunzaker",
+      "email": "nate.hunzaker@viget.com",
+      "url": "http://viget.com"
+    },
+    {
+      "name": "Chris Manning",
+      "email": "chris.manning@viget.com",
+      "url": "http://viget.com"
+    },
+    {
+      "name": "David Eisinger",
+      "email": "david.eisinger@viget.com",
+      "url": "http://viget.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": "https://github.com/vigetlabs/colonel-kurtz/issues",
+  "homepage": "https://github.com/vigetlabs/colonel-kurtz",
+  "dependencies": {
+    "classnames": "~2",
+    "group-by": "0.0.1",
+    "microcosm": "~9.21",
+    "react-addons-css-transition-group": ">= 0.14",
+    "react-focus-trap": "~2.3",
+    "react-ink": "~5.1",
+    "uid": "0.0.2"
+  },
+  "babel": {
+    "stage": 2,
+    "sourceMaps": "inline",
+    "plugins": [
+      "object-assign"
+    ]
+  }
+}

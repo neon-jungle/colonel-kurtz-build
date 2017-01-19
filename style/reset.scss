@@ -1,0 +1,29 @@
+/**
+ * Reset
+ * This should always be included under the .colonel namespace
+ */
+
+& {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+button {
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}

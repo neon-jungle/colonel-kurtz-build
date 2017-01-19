@@ -1,0 +1,32 @@
+@import 'values/type';
+@import 'values/colors';
+@import 'values/radii';
+@import 'values/sizes';
+
+@import 'generators/functions';
+@import 'generators/extensions';
+
+@import 'animations/fade';
+@import 'animations/menu';
+@import 'animations/switch';
+@import 'animations/float-up';
+
+.colonel {
+  background: $col-backdrop;
+  font-family: $col-font-family;
+  font-size: $col-type-size-body;
+  height: 100%;
+  position: relative;
+  text-align: center;
+
+  @import 'reset';
+  @import 'components/block';
+  @import 'components/dialog';
+  @import 'components/editor';
+  @import 'components/fab';
+  @import 'components/menu';
+  @import 'components/switch';
+  @import 'components/button';
+  @import 'components/unsupported';
+  @import 'utilities';
+}

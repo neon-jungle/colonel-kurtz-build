@@ -1,0 +1,85 @@
+/**
+ * Dialog
+ * http://www.google.com/design/spec/components/dialogs.html#dialogs-specs
+ */
+
+$col-dialog-background : #ffffff !default;
+$col-dialog-padding    : unit(3) !default;
+$col-dialog-width      : unit(80) !default;
+$col-dialog-radius     : 2px !default;
+$col-dialog-font-size  : 16px !default;
+
+.col-dialog-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.col-dialog-backdrop {
+  animation: 0.4s colonel-fade;
+  background: $col-secondary-text;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.col-dialog {
+  @extend %shadow-2;
+  animation: 0.4s colonel-float-up;
+  background: $col-dialog-background;
+  border-radius: $col-dialog-radius;
+  color: $col-secondary-text;
+  font-size: $col-dialog-font-size;
+  margin: 0 auto;
+  max-height: 90%;
+  max-width: $col-dialog-width;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-y: scroll;
+  padding: $col-dialog-padding;
+  position: relative;
+  text-align: left;
+  width: 90%;
+  z-index: 1;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.col-dialog-title {
+  color: $col-text;
+  font-size: sp(20);
+  font-weight: 500;
+  margin: 0 0 unit(2.5);
+  line-height: unit(2.5);
+}
+
+.col-dialog-close {
+  @extend %col-focusable;
+  border-radius: 50%;
+  height: unit(6);
+  line-height: 0;
+  position: absolute;
+  right: unit(1);
+  top: unit(1.5);
+  width: unit(6);
+
+  svg {
+    fill: $col-secondary-text;
+  }
+}
+
+.col-dialog-footer {
+  margin: 0 unit(-1.5) unit(-1);
+  padding-top: unit(3);
+  text-align: right;
+}

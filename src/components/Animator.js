@@ -1,0 +1,29 @@
+/**
+ * Animator
+ * In order to make block animations easy to edit in one place, this
+ * component maintains all of this logic.
+ */
+
+'use strict';
+
+var Animation = require('react-addons-css-transition-group');
+var React = require('react');
+
+module.exports = React.createClass({
+  displayName: 'exports',
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      component: 'div',
+      transitionName: 'col-editor-block',
+      transitionEnterTimeout: 280,
+      transitionLeaveTimeout: 280
+    };
+  },
+
+  render: function render() {
+    return React.createElement(Animation, this.props, this.props.children);
+  }
+
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL0FuaW1hdG9yLmpzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7OztBQU1BLElBQUksU0FBUyxHQUFHLE9BQU8sQ0FBQyxtQ0FBbUMsQ0FBQyxDQUFBO0FBQzVELElBQUksS0FBSyxHQUFPLE9BQU8sQ0FBQyxPQUFPLENBQUMsQ0FBQTs7QUFFaEMsTUFBTSxDQUFDLE9BQU8sR0FBRyxLQUFLLENBQUMsV0FBVyxDQUFDOzs7QUFFakMsaUJBQWUsRUFBQSwyQkFBRztBQUNoQixXQUFPO0FBQ0wsZUFBUyxFQUFFLEtBQUs7QUFDaEIsb0JBQWMsRUFBRSxrQkFBa0I7QUFDbEMsNEJBQXNCLEVBQUUsR0FBRztBQUMzQiw0QkFBc0IsRUFBRSxHQUFHO0tBQzVCLENBQUE7R0FDRjs7QUFFRCxRQUFNLEVBQUEsa0JBQUc7QUFDUCxXQUFPLEtBQUssQ0FBQyxhQUFhLENBQUMsU0FBUyxFQUFFLElBQUksQ0FBQyxLQUFLLEVBQUUsSUFBSSxDQUFDLEtBQUssQ0FBQyxRQUFRLENBQUMsQ0FBQTtHQUN2RTs7Q0FFRixDQUFDLENBQUEiLCJmaWxlIjoiQW5pbWF0b3IuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEFuaW1hdG9yXG4gKiBJbiBvcmRlciB0byBtYWtlIGJsb2NrIGFuaW1hdGlvbnMgZWFzeSB0byBlZGl0IGluIG9uZSBwbGFjZSwgdGhpc1xuICogY29tcG9uZW50IG1haW50YWlucyBhbGwgb2YgdGhpcyBsb2dpYy5cbiAqL1xuXG5sZXQgQW5pbWF0aW9uID0gcmVxdWlyZSgncmVhY3QtYWRkb25zLWNzcy10cmFuc2l0aW9uLWdyb3VwJylcbmxldCBSZWFjdCAgICAgPSByZXF1aXJlKCdyZWFjdCcpXG5cbm1vZHVsZS5leHBvcnRzID0gUmVhY3QuY3JlYXRlQ2xhc3Moe1xuXG4gIGdldERlZmF1bHRQcm9wcygpIHtcbiAgICByZXR1cm4ge1xuICAgICAgY29tcG9uZW50OiAnZGl2JyxcbiAgICAgIHRyYW5zaXRpb25OYW1lOiAnY29sLWVkaXRvci1ibG9jaycsXG4gICAgICB0cmFuc2l0aW9uRW50ZXJUaW1lb3V0OiAyODAsXG4gICAgICB0cmFuc2l0aW9uTGVhdmVUaW1lb3V0OiAyODBcbiAgICB9XG4gIH0sXG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiBSZWFjdC5jcmVhdGVFbGVtZW50KEFuaW1hdGlvbiwgdGhpcy5wcm9wcywgdGhpcy5wcm9wcy5jaGlsZHJlbilcbiAgfVxuXG59KVxuIl19

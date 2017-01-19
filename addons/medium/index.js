@@ -1,0 +1,71 @@
+/**
+ * This component adds a medium.com-like rich text editor block type.
+ *
+ * Source for this component can be found here:
+ * https://github.com/daviferreira/medium-editor
+ */
+
+'use strict';
+
+var MediumEditor = require('./vendor/medium-editor');
+var React = require('react');
+var DOM = require('react-dom');
+
+var Medium = React.createClass({
+  displayName: 'Medium',
+
+  propTypes: {
+    content: React.PropTypes.object.isRequired,
+    onChange: React.PropTypes.func.isRequired
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      content: { html: '', text: '' },
+      options: {
+        buttons: ['header1', 'header2', 'bold', 'italic', 'underline', 'anchor', 'quote', 'unorderedlist', 'orderedlist'],
+        firstHeader: 'h1',
+        secondHeader: 'h2',
+        diffLeft: 0,
+        diffTop: -10,
+        disableDoubleReturn: true
+      }
+    };
+  },
+
+  shouldComponentUpdate: function shouldComponentUpdate(props, state) {
+    return false;
+  },
+
+  componentDidMount: function componentDidMount() {
+    this.setState({
+      editor: new MediumEditor(DOM.findDOMNode(this.refs.editor), this.props.options)
+    });
+  },
+
+  componentWillUnmount: function componentWillUnmount() {
+    this.state.editor.deactivate();
+  },
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'col-block-medium' },
+      React.createElement('div', { className: 'col-medium', onBlur: this._onBlur, role: 'textarea', 'aria-multiline': 'true', ref: 'editor', dangerouslySetInnerHTML: { __html: this.props.content.html } }),
+      this.props.children
+    );
+  },
+
+  _onBlur: function _onBlur() {
+    var editor = DOM.findDOMNode(this.refs.editor);
+
+    this.props.onChange({
+      text: editor.textContent,
+      html: editor.innerHTML
+    });
+  }
+
+});
+
+module.exports = Medium;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2FkZG9ucy9tZWRpdW0vaW5kZXguanN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQU9BLElBQUksWUFBWSxHQUFHLE9BQU8sQ0FBQyx3QkFBd0IsQ0FBQyxDQUFBO0FBQ3BELElBQUksS0FBSyxHQUFVLE9BQU8sQ0FBQyxPQUFPLENBQUMsQ0FBQTtBQUNuQyxJQUFJLEdBQUcsR0FBWSxPQUFPLENBQUMsV0FBVyxDQUFDLENBQUE7O0FBRXZDLElBQUksTUFBTSxHQUFHLEtBQUssQ0FBQyxXQUFXLENBQUM7OztBQUU3QixXQUFTLEVBQUU7QUFDVCxXQUFPLEVBQUksS0FBSyxDQUFDLFNBQVMsQ0FBQyxNQUFNLENBQUMsVUFBVTtBQUM1QyxZQUFRLEVBQUcsS0FBSyxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsVUFBVTtHQUMzQzs7QUFFRCxpQkFBZSxFQUFBLDJCQUFHO0FBQ2hCLFdBQU87QUFDTCxhQUFPLEVBQUUsRUFBRSxJQUFJLEVBQUUsRUFBRSxFQUFFLElBQUksRUFBRSxFQUFFLEVBQUM7QUFDOUIsYUFBTyxFQUFFO0FBQ1AsZUFBTyxFQUFFLENBQUUsU0FBUyxFQUFFLFNBQVMsRUFBRSxNQUFNLEVBQUUsUUFBUSxFQUFFLFdBQVcsRUFBRSxRQUFRLEVBQUUsT0FBTyxFQUFHLGVBQWUsRUFBRSxhQUFhLENBQUU7QUFDcEgsbUJBQVcsRUFBRSxJQUFJO0FBQ2pCLG9CQUFZLEVBQUUsSUFBSTtBQUNsQixnQkFBUSxFQUFFLENBQUM7QUFDWCxlQUFPLEVBQUUsQ0FBQyxFQUFFO0FBQ1osMkJBQW1CLEVBQUUsSUFBSTtPQUMxQjtLQUNGLENBQUE7R0FDRjs7QUFFRCx1QkFBcUIsRUFBQSwrQkFBQyxLQUFhLEVBQUUsS0FBYSxFQUFDO0FBQ2pELFdBQU8sS0FBSyxDQUFBO0dBQ2I7O0FBRUQsbUJBQWlCLEVBQUEsNkJBQUc7QUFDbEIsUUFBSSxDQUFDLFFBQVEsQ0FBQztBQUNaLFlBQU0sRUFBRSxJQUFJLFlBQVksQ0FBQyxHQUFHLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLEVBQUUsSUFBSSxDQUFDLEtBQUssQ0FBQyxPQUFPLENBQUM7S0FDaEYsQ0FBQyxDQUFBO0dBQ0g7O0FBRUQsc0JBQW9CLEVBQUEsZ0NBQUc7QUFDckIsUUFBSSxDQUFDLEtBQUssQ0FBQyxNQUFNLENBQUMsVUFBVSxFQUFFLENBQUE7R0FDL0I7O0FBRUQsUUFBTSxFQUFBLGtCQUFHO0FBQ1AsV0FDRTs7UUFBSyxTQUFTLEVBQUMsa0JBQWtCO01BQy9CLDZCQUFLLFNBQVMsRUFBQyxZQUFZLEVBQUMsTUFBTSxFQUFHLElBQUksQ0FBQyxPQUFPLEFBQUUsRUFBQyxJQUFJLEVBQUMsVUFBVSxFQUFDLGtCQUFlLE1BQU0sRUFBQyxHQUFHLEVBQUMsUUFBUSxFQUFDLHVCQUF1QixFQUFFLEVBQUUsTUFBTSxFQUFFLElBQUksQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLElBQUksRUFBRSxBQUFDLEdBQUc7TUFDckssSUFBSSxDQUFDLEtBQUssQ0FBQyxRQUFRO0tBQ2pCLENBQ1A7R0FDRjs7QUFFRCxTQUFPLEVBQUEsbUJBQUc7QUFDUixRQUFJLE1BQU0sR0FBRyxHQUFHLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUE7O0FBRTlDLFFBQUksQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDO0FBQ2xCLFVBQUksRUFBRSxNQUFNLENBQUMsV0FBVztBQUN4QixVQUFJLEVBQUUsTUFBTSxDQUFDLFNBQVM7S0FDdkIsQ0FBQyxDQUFBO0dBQ0g7O0NBRUYsQ0FBQyxDQUFBOztBQUVGLE1BQU0sQ0FBQyxPQUFPLEdBQUcsTUFBTSxDQUFBIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBUaGlzIGNvbXBvbmVudCBhZGRzIGEgbWVkaXVtLmNvbS1saWtlIHJpY2ggdGV4dCBlZGl0b3IgYmxvY2sgdHlwZS5cbiAqXG4gKiBTb3VyY2UgZm9yIHRoaXMgY29tcG9uZW50IGNhbiBiZSBmb3VuZCBoZXJlOlxuICogaHR0cHM6Ly9naXRodWIuY29tL2RhdmlmZXJyZWlyYS9tZWRpdW0tZWRpdG9yXG4gKi9cblxubGV0IE1lZGl1bUVkaXRvciA9IHJlcXVpcmUoJy4vdmVuZG9yL21lZGl1bS1lZGl0b3InKVxubGV0IFJlYWN0ICAgICAgICA9IHJlcXVpcmUoJ3JlYWN0JylcbmxldCBET00gICAgICAgICAgPSByZXF1aXJlKCdyZWFjdC1kb20nKVxuXG52YXIgTWVkaXVtID0gUmVhY3QuY3JlYXRlQ2xhc3Moe1xuXG4gIHByb3BUeXBlczoge1xuICAgIGNvbnRlbnQgIDogUmVhY3QuUHJvcFR5cGVzLm9iamVjdC5pc1JlcXVpcmVkLFxuICAgIG9uQ2hhbmdlIDogUmVhY3QuUHJvcFR5cGVzLmZ1bmMuaXNSZXF1aXJlZFxuICB9LFxuXG4gIGdldERlZmF1bHRQcm9wcygpIHtcbiAgICByZXR1cm4ge1xuICAgICAgY29udGVudDogeyBodG1sOiAnJywgdGV4dDogJyd9LFxuICAgICAgb3B0aW9uczoge1xuICAgICAgICBidXR0b25zOiBbICdoZWFkZXIxJywgJ2hlYWRlcjInLCAnYm9sZCcsICdpdGFsaWMnLCAndW5kZXJsaW5lJywgJ2FuY2hvcicsICdxdW90ZScsICAndW5vcmRlcmVkbGlzdCcsICdvcmRlcmVkbGlzdCcgXSxcbiAgICAgICAgZmlyc3RIZWFkZXI6ICdoMScsXG4gICAgICAgIHNlY29uZEhlYWRlcjogJ2gyJyxcbiAgICAgICAgZGlmZkxlZnQ6IDAsXG4gICAgICAgIGRpZmZUb3A6IC0xMCxcbiAgICAgICAgZGlzYWJsZURvdWJsZVJldHVybjogdHJ1ZVxuICAgICAgfVxuICAgIH1cbiAgfSxcblxuICBzaG91bGRDb21wb25lbnRVcGRhdGUocHJvcHM6IE9iamVjdCwgc3RhdGU6IE9iamVjdCl7XG4gICAgcmV0dXJuIGZhbHNlXG4gIH0sXG5cbiAgY29tcG9uZW50RGlkTW91bnQoKSB7XG4gICAgdGhpcy5zZXRTdGF0ZSh7XG4gICAgICBlZGl0b3I6IG5ldyBNZWRpdW1FZGl0b3IoRE9NLmZpbmRET01Ob2RlKHRoaXMucmVmcy5lZGl0b3IpLCB0aGlzLnByb3BzLm9wdGlvbnMpXG4gICAgfSlcbiAgfSxcblxuICBjb21wb25lbnRXaWxsVW5tb3VudCgpIHtcbiAgICB0aGlzLnN0YXRlLmVkaXRvci5kZWFjdGl2YXRlKClcbiAgfSxcblxuICByZW5kZXIoKSB7XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLWJsb2NrLW1lZGl1bVwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC1tZWRpdW1cIiBvbkJsdXI9eyB0aGlzLl9vbkJsdXIgfSByb2xlPVwidGV4dGFyZWFcIiBhcmlhLW11bHRpbGluZT1cInRydWVcIiByZWY9XCJlZGl0b3JcIiBkYW5nZXJvdXNseVNldElubmVySFRNTD17eyBfX2h0bWw6IHRoaXMucHJvcHMuY29udGVudC5odG1sIH19IC8+XG4gICAgICAgIHsgdGhpcy5wcm9wcy5jaGlsZHJlbiB9XG4gICAgICA8L2Rpdj5cbiAgICApXG4gIH0sXG5cbiAgX29uQmx1cigpIHtcbiAgICB2YXIgZWRpdG9yID0gRE9NLmZpbmRET01Ob2RlKHRoaXMucmVmcy5lZGl0b3IpXG5cbiAgICB0aGlzLnByb3BzLm9uQ2hhbmdlKHtcbiAgICAgIHRleHQ6IGVkaXRvci50ZXh0Q29udGVudCxcbiAgICAgIGh0bWw6IGVkaXRvci5pbm5lckhUTUxcbiAgICB9KVxuICB9XG5cbn0pXG5cbm1vZHVsZS5leHBvcnRzID0gTWVkaXVtXG4iXX0=

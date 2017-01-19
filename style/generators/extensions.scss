@@ -1,0 +1,54 @@
+%shadow-1 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+%shadow-2 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+%shadow-3 {
+  box-shadow: 0 11px 7px 0 rgba(0, 0, 0, 0.19), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
+}
+
+%shadow-4 {
+  box-shadow: 0 14px 12px 0 rgba(0, 0, 0, 0.17),0 20px 40px 0 rgba(0, 0, 0, 0.3);
+}
+
+%shadow-5 {
+  box-shadow: 0 17px 17px 0 rgba(0, 0, 0, 0.15), 0 27px 55px 0 rgba(0, 0, 0, 0.3);
+}
+
+%col-focusable {
+  position: relative;
+
+  &:before {
+    border-radius: inherit;
+    border: 2px solid transparent;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(0.7);
+    transition: 0.3s all;
+  }
+
+  &:focus {
+    outline: none;
+
+    &:before {
+      border-color: rgba($col-primary, 0.5);
+      transform: scale(1);
+    }
+
+    &:active:before {
+      border-color: rgba($col-primary, 0.7);
+      transform: scale(0.9);
+    }
+
+    &:active:hover:before {
+      border-color: transparent;
+    }
+  }
+}
